@@ -18,9 +18,7 @@ namespace CBT {
 		MyForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+			button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click); // added so we can save data later
 		}
 
 	protected:
