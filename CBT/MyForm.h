@@ -77,11 +77,13 @@ namespace CBT {
 			// 
 			// button1
 			// 
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button1->Location = System::Drawing::Point(83, 72);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(136, 33);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"button1";
+			this->button1->Text = L"ADD ITEM:";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// label1
@@ -131,45 +133,46 @@ namespace CBT {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(31, 140);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(44, 16);
+			this->label2->Size = System::Drawing::Size(50, 16);
 			this->label2->TabIndex = 6;
-			this->label2->Text = L"label2";
+			this->label2->Text = L"Name: ";
+			this->label2->Click += gcnew System::EventHandler(this, &MyForm::label2_Click);
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(31, 185);
+			this->label3->Location = System::Drawing::Point(18, 185);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(44, 16);
+			this->label3->Size = System::Drawing::Size(67, 16);
 			this->label3->TabIndex = 7;
-			this->label3->Text = L"label3";
+			this->label3->Text = L"Due Date:";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(31, 234);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(44, 16);
+			this->label4->Size = System::Drawing::Size(41, 16);
 			this->label4->TabIndex = 8;
-			this->label4->Text = L"label4";
+			this->label4->Text = L"Time:";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(31, 280);
+			this->label5->Location = System::Drawing::Point(4, 286);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(44, 16);
+			this->label5->Size = System::Drawing::Size(81, 16);
 			this->label5->TabIndex = 9;
-			this->label5->Text = L"label5";
+			this->label5->Text = L"Description: ";
 			// 
 			// checkBox1
 			// 
 			this->checkBox1->AutoSize = true;
 			this->checkBox1->Location = System::Drawing::Point(83, 339);
 			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(95, 20);
+			this->checkBox1->Size = System::Drawing::Size(102, 20);
 			this->checkBox1->TabIndex = 10;
-			this->checkBox1->Text = L"checkBox1";
+			this->checkBox1->Text = L"Notifications";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			// 
 			// checkBox2
@@ -177,9 +180,9 @@ namespace CBT {
 			this->checkBox2->AutoSize = true;
 			this->checkBox2->Location = System::Drawing::Point(83, 376);
 			this->checkBox2->Name = L"checkBox2";
-			this->checkBox2->Size = System::Drawing::Size(95, 20);
+			this->checkBox2->Size = System::Drawing::Size(126, 20);
 			this->checkBox2->TabIndex = 11;
-			this->checkBox2->Text = L"checkBox2";
+			this->checkBox2->Text = L"Nagging Notifier";
 			this->checkBox2->UseVisualStyleBackColor = true;
 			// 
 			// MyForm
@@ -210,5 +213,7 @@ namespace CBT {
 	}
 	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
