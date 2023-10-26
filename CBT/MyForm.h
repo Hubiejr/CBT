@@ -85,6 +85,7 @@ namespace CBT {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"ADD ITEM:";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// label1
 			// 
@@ -209,6 +210,24 @@ namespace CBT {
 
 		}
 #pragma endregion
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	// Gets data entered by User
+	String^ name = textBox1->Text;
+	String^ dueDate = textBox2->Text;
+	String^ time = textBox3->Text;
+	String^ description = textBox4->Text;
+
+	// You can now save this data to a file or a database, or perform any other desired action.
+	// For this example, we'll just display the data in a message box.
+	String^ message = "Name: " + name + "\nDue Date: " + dueDate + "\nTime: " + time + "\nDescription: " + description;
+	MessageBox::Show(message, "Data Saved");
+
+	// clear text boxes after you hit the button
+	textBox1->Clear();
+	textBox2->Clear();
+	textBox3->Clear();
+	textBox4->Clear();
+}
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
