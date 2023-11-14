@@ -199,7 +199,7 @@ namespace CBT {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ScrollBar;
+			this->BackColor = System::Drawing::Color::LemonChiffon;
 			this->ClientSize = System::Drawing::Size(289, 425);
 			this->Controls->Add(this->checkBox2);
 			this->Controls->Add(this->checkBox1);
@@ -213,8 +213,10 @@ namespace CBT {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
+			this->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -245,6 +247,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
