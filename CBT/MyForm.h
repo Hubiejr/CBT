@@ -188,7 +188,8 @@ namespace CBT {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(306, 421);
+			this->BackColor = System::Drawing::SystemColors::ScrollBar;
+			this->ClientSize = System::Drawing::Size(289, 425);
 			this->Controls->Add(this->checkBox2);
 			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->label5);
