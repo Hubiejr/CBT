@@ -200,7 +200,7 @@ namespace CBT {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::LemonChiffon;
-			this->ClientSize = System::Drawing::Size(289, 425);
+			this->ClientSize = System::Drawing::Size(277, 425);
 			this->Controls->Add(this->checkBox2);
 			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->label5);
@@ -215,7 +215,7 @@ namespace CBT {
 			this->Controls->Add(this->button1);
 			this->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Text = L"EditSchedule";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
