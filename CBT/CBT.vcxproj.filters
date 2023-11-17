@@ -18,7 +18,7 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TodDoList.cpp">
+    <ClCompile Include="ToDoList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

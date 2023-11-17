@@ -122,7 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="TodDoList.cpp" />
+    <ClCompile Include="ToDoList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">

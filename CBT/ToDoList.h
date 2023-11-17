@@ -35,9 +35,12 @@ namespace CBT {
 			}
 		}
 	private: System::Windows::Forms::Label^ Today1;
-	private: System::Windows::Forms::Label^ ToDo;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ ToDoList1;
+	private: System::Windows::Forms::Label^ Date;
+
+
+	private: System::Windows::Forms::Label^ Descriptions;
+
 	protected:
 
 	protected:
@@ -56,9 +59,9 @@ namespace CBT {
 		void InitializeComponent(void)
 		{
 			this->Today1 = (gcnew System::Windows::Forms::Label());
-			this->ToDo = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->ToDoList1 = (gcnew System::Windows::Forms::Label());
+			this->Date = (gcnew System::Windows::Forms::Label());
+			this->Descriptions = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// Today1
@@ -74,49 +77,49 @@ namespace CBT {
 			this->Today1->Text = L"Today:";
 			this->Today1->Click += gcnew System::EventHandler(this, &MyForm1::label1_Click);
 			// 
-			// ToDo
+			// ToDoList1
 			// 
-			this->ToDo->AutoSize = true;
-			this->ToDo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->ToDoList1->AutoSize = true;
+			this->ToDoList1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->ToDo->Location = System::Drawing::Point(25, 9);
-			this->ToDo->Name = L"ToDo";
-			this->ToDo->Size = System::Drawing::Size(109, 22);
-			this->ToDo->TabIndex = 1;
-			this->ToDo->Text = L"To Do List:";
+			this->ToDoList1->Location = System::Drawing::Point(25, 9);
+			this->ToDoList1->Name = L"ToDoList1";
+			this->ToDoList1->Size = System::Drawing::Size(109, 22);
+			this->ToDoList1->TabIndex = 1;
+			this->ToDoList1->Text = L"To Do List:";
 			// 
-			// label1
+			// Date
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Date->AutoSize = true;
+			this->Date->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(220, 9);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(141, 22);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"|Today\'s Date|";
+			this->Date->Location = System::Drawing::Point(220, 9);
+			this->Date->Name = L"Date";
+			this->Date->Size = System::Drawing::Size(141, 22);
+			this->Date->TabIndex = 2;
+			this->Date->Text = L"|Today\'s Date|";
 			// 
-			// label2
+			// Descriptions
 			// 
-			this->label2->AutoSize = true;
-			this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->Descriptions->AutoSize = true;
+			this->Descriptions->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->Descriptions->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(213, 49);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(168, 31);
-			this->label2->TabIndex = 3;
-			this->label2->Text = L"Descriptions:";
+			this->Descriptions->Location = System::Drawing::Point(213, 49);
+			this->Descriptions->Name = L"Descriptions";
+			this->Descriptions->Size = System::Drawing::Size(168, 31);
+			this->Descriptions->TabIndex = 3;
+			this->Descriptions->Text = L"Descriptions:";
 			// 
 			// MyForm1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::LemonChiffon;
-			this->ClientSize = System::Drawing::Size(444, 413);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->ToDo);
+			this->ClientSize = System::Drawing::Size(384, 413);
+			this->Controls->Add(this->Descriptions);
+			this->Controls->Add(this->Date);
+			this->Controls->Add(this->ToDoList1);
 			this->Controls->Add(this->Today1);
 			this->Name = L"MyForm1";
 			this->Text = L"ToDoList";
