@@ -25,6 +25,9 @@ namespace CBT {
 		void SetAssignment1(String^ value) { // method for adding stuff to Assigment1
 			Assignment1->Text = value;
 		}
+		void SetAssignment2(String^ value) { // method for adding stuff to Assigment1
+			Assignment2->Text = value;
+		}
 
 	protected:
 		/// <summary>
@@ -44,10 +47,13 @@ namespace CBT {
 
 	private: System::Windows::Forms::Label^ Descriptions;
 	private: System::Windows::Forms::Label^ Assignment1;
+	private: System::Windows::Forms::Label^ Assignment2;
+	private: System::Windows::Forms::Label^ Assignment3;
+	private: System::Windows::Forms::Label^ Assignment4;
 
-	private: System::Windows::Forms::Label^ Assigment2;
-	private: System::Windows::Forms::Label^ Assigment3;
-	private: System::Windows::Forms::Label^ Assigment4;
+
+
+
 	private: System::Windows::Forms::Label^ label1;
 
 
@@ -75,9 +81,9 @@ namespace CBT {
 			this->Date = (gcnew System::Windows::Forms::Label());
 			this->Descriptions = (gcnew System::Windows::Forms::Label());
 			this->Assignment1 = (gcnew System::Windows::Forms::Label());
-			this->Assigment2 = (gcnew System::Windows::Forms::Label());
-			this->Assigment3 = (gcnew System::Windows::Forms::Label());
-			this->Assigment4 = (gcnew System::Windows::Forms::Label());
+			this->Assignment2 = (gcnew System::Windows::Forms::Label());
+			this->Assignment3 = (gcnew System::Windows::Forms::Label());
+			this->Assignment4 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
@@ -138,32 +144,32 @@ namespace CBT {
 			this->Assignment1->Text = L"Assignment1";
 			this->Assignment1->Click += gcnew System::EventHandler(this, &ToDo::label1_Click_1);
 			// 
-			// Assigment2
+			// Assignment2
 			// 
-			this->Assigment2->AutoSize = true;
-			this->Assigment2->Location = System::Drawing::Point(23, 176);
-			this->Assigment2->Name = L"Assigment2";
-			this->Assigment2->Size = System::Drawing::Size(84, 16);
-			this->Assigment2->TabIndex = 5;
-			this->Assigment2->Text = L"Assignment2";
+			this->Assignment2->AutoSize = true;
+			this->Assignment2->Location = System::Drawing::Point(23, 176);
+			this->Assignment2->Name = L"Assignment2";
+			this->Assignment2->Size = System::Drawing::Size(84, 16);
+			this->Assignment2->TabIndex = 5;
+			this->Assignment2->Text = L"Assignment2";
 			// 
-			// Assigment3
+			// Assignment3
 			// 
-			this->Assigment3->AutoSize = true;
-			this->Assigment3->Location = System::Drawing::Point(23, 213);
-			this->Assigment3->Name = L"Assigment3";
-			this->Assigment3->Size = System::Drawing::Size(84, 16);
-			this->Assigment3->TabIndex = 6;
-			this->Assigment3->Text = L"Assignment3";
+			this->Assignment3->AutoSize = true;
+			this->Assignment3->Location = System::Drawing::Point(23, 213);
+			this->Assignment3->Name = L"Assignment3";
+			this->Assignment3->Size = System::Drawing::Size(84, 16);
+			this->Assignment3->TabIndex = 6;
+			this->Assignment3->Text = L"Assignment3";
 			// 
-			// Assigment4
+			// Assignment4
 			// 
-			this->Assigment4->AutoSize = true;
-			this->Assigment4->Location = System::Drawing::Point(23, 251);
-			this->Assigment4->Name = L"Assigment4";
-			this->Assigment4->Size = System::Drawing::Size(84, 16);
-			this->Assigment4->TabIndex = 7;
-			this->Assigment4->Text = L"Assignment4";
+			this->Assignment4->AutoSize = true;
+			this->Assignment4->Location = System::Drawing::Point(23, 251);
+			this->Assignment4->Name = L"Assignment4";
+			this->Assignment4->Size = System::Drawing::Size(84, 16);
+			this->Assignment4->TabIndex = 7;
+			this->Assignment4->Text = L"Assignment4";
 			// 
 			// label1
 			// 
@@ -180,9 +186,9 @@ namespace CBT {
 			this->BackColor = System::Drawing::Color::LemonChiffon;
 			this->ClientSize = System::Drawing::Size(384, 413);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->Assigment4);
-			this->Controls->Add(this->Assigment3);
-			this->Controls->Add(this->Assigment2);
+			this->Controls->Add(this->Assignment4);
+			this->Controls->Add(this->Assignment3);
+			this->Controls->Add(this->Assignment2);
 			this->Controls->Add(this->Assignment1);
 			this->Controls->Add(this->Descriptions);
 			this->Controls->Add(this->Date);

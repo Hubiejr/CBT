@@ -1,5 +1,6 @@
 #pragma once
 #include "TodoList.h"
+#include <list> // Add to include a list it will be easy they say
 namespace CBT {
 
 	using namespace System;
@@ -19,6 +20,7 @@ namespace CBT {
 		{
 			InitializeComponent();
 			// button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click); // added so we can save data later
+			assignmentsList = gcnew System::Collections::Generic::List<ToDo^>();
 		}
 
 	protected:
@@ -32,6 +34,7 @@ namespace CBT {
 				delete components;
 			}
 		}
+	private: System::Collections::Generic::List<ToDo^>^ assignmentsList; // List to store ToDo forms
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ textBox1;
@@ -226,7 +229,11 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	ToDo^ form = gcnew ToDo(); // will open new form when hit of the button 
 	form->SetAssignment1(textBox1->Text);
+	form->SetAssignment2(textBox1->Text);
 	form->Show();
+
+	// adds the ToDo form to the list
+	assignmentsList->Add(form);
 
 	// Gets data entered by User
 	String^ name = textBox1->Text;
@@ -238,6 +245,17 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	// For this example, we'll just display the data in a message box.
 	String^ message = "Name: " + name + "\nDue Date: " + dueDate + "\nTime: " + time + "\nDescription: " + description;
 	MessageBox::Show(message, "Data Saved");
+
+	//// Create a new instance of ToDo for each assignment  DOESNT WORK PROPERLY
+	//ToDo^ form1 = gcnew ToDo();
+	//form1->SetAssignment1(name);
+	//form1->Show();
+	//assignmentsList->Add(form1);
+
+	//ToDo^ form2 = gcnew ToDo();
+	//form2->SetAssignment2(name);
+	//form2->Show();
+	//assignmentsList->Add(form2);
 
 	// clear text boxes after you hit the button
 	textBox1->Clear();
