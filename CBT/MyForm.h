@@ -1,5 +1,5 @@
 #pragma once
-
+#include "TodoList.h"
 namespace CBT {
 
 	using namespace System;
@@ -223,6 +223,11 @@ namespace CBT {
 		}
 #pragma endregion
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	ToDo^ form = gcnew ToDo(); // will open new form when hit of the button 
+	form->SetAssignment1(textBox1->Text);
+	form->Show();
+
 	// Gets data entered by User
 	String^ name = textBox1->Text;
 	String^ dueDate = textBox2->Text;

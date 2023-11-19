@@ -10,24 +10,27 @@ namespace CBT {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for MyForm1
+	/// Summary for ToDo
 	/// </summary>
-	public ref class MyForm1 : public System::Windows::Forms::Form
+	public ref class ToDo : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm1(void)
+		ToDo(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
 			//
 		}
+		void SetAssignment1(String^ value) { // method for adding stuff to Assigment1
+			Assignment1->Text = value;
+		}
 
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm1()
+		~ToDo()
 		{
 			if (components)
 			{
@@ -40,6 +43,15 @@ namespace CBT {
 
 
 	private: System::Windows::Forms::Label^ Descriptions;
+	private: System::Windows::Forms::Label^ Assignment1;
+
+	private: System::Windows::Forms::Label^ Assigment2;
+	private: System::Windows::Forms::Label^ Assigment3;
+	private: System::Windows::Forms::Label^ Assigment4;
+	private: System::Windows::Forms::Label^ label1;
+
+
+
 
 	protected:
 
@@ -62,6 +74,11 @@ namespace CBT {
 			this->ToDoList1 = (gcnew System::Windows::Forms::Label());
 			this->Date = (gcnew System::Windows::Forms::Label());
 			this->Descriptions = (gcnew System::Windows::Forms::Label());
+			this->Assignment1 = (gcnew System::Windows::Forms::Label());
+			this->Assigment2 = (gcnew System::Windows::Forms::Label());
+			this->Assigment3 = (gcnew System::Windows::Forms::Label());
+			this->Assigment4 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// Today1
@@ -75,7 +92,7 @@ namespace CBT {
 			this->Today1->Size = System::Drawing::Size(95, 31);
 			this->Today1->TabIndex = 0;
 			this->Today1->Text = L"Today:";
-			this->Today1->Click += gcnew System::EventHandler(this, &MyForm1::label1_Click);
+			this->Today1->Click += gcnew System::EventHandler(this, &ToDo::label1_Click);
 			// 
 			// ToDoList1
 			// 
@@ -111,19 +128,69 @@ namespace CBT {
 			this->Descriptions->TabIndex = 3;
 			this->Descriptions->Text = L"Descriptions:";
 			// 
-			// MyForm1
+			// Assignment1
+			// 
+			this->Assignment1->AutoSize = true;
+			this->Assignment1->Location = System::Drawing::Point(26, 135);
+			this->Assignment1->Name = L"Assignment1";
+			this->Assignment1->Size = System::Drawing::Size(84, 16);
+			this->Assignment1->TabIndex = 4;
+			this->Assignment1->Text = L"Assignment1";
+			this->Assignment1->Click += gcnew System::EventHandler(this, &ToDo::label1_Click_1);
+			// 
+			// Assigment2
+			// 
+			this->Assigment2->AutoSize = true;
+			this->Assigment2->Location = System::Drawing::Point(23, 176);
+			this->Assigment2->Name = L"Assigment2";
+			this->Assigment2->Size = System::Drawing::Size(84, 16);
+			this->Assigment2->TabIndex = 5;
+			this->Assigment2->Text = L"Assignment2";
+			// 
+			// Assigment3
+			// 
+			this->Assigment3->AutoSize = true;
+			this->Assigment3->Location = System::Drawing::Point(23, 213);
+			this->Assigment3->Name = L"Assigment3";
+			this->Assigment3->Size = System::Drawing::Size(84, 16);
+			this->Assigment3->TabIndex = 6;
+			this->Assigment3->Text = L"Assignment3";
+			// 
+			// Assigment4
+			// 
+			this->Assigment4->AutoSize = true;
+			this->Assigment4->Location = System::Drawing::Point(23, 251);
+			this->Assigment4->Name = L"Assigment4";
+			this->Assigment4->Size = System::Drawing::Size(84, 16);
+			this->Assigment4->TabIndex = 7;
+			this->Assigment4->Text = L"Assignment4";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(148, 176);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(0, 16);
+			this->label1->TabIndex = 9;
+			// 
+			// ToDo
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::LemonChiffon;
 			this->ClientSize = System::Drawing::Size(384, 413);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->Assigment4);
+			this->Controls->Add(this->Assigment3);
+			this->Controls->Add(this->Assigment2);
+			this->Controls->Add(this->Assignment1);
 			this->Controls->Add(this->Descriptions);
 			this->Controls->Add(this->Date);
 			this->Controls->Add(this->ToDoList1);
 			this->Controls->Add(this->Today1);
-			this->Name = L"MyForm1";
+			this->Name = L"ToDo";
 			this->Text = L"ToDoList";
-			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
+			this->Load += gcnew System::EventHandler(this, &ToDo::ToDo_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -131,7 +198,9 @@ namespace CBT {
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void MyForm1_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void ToDo_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }
