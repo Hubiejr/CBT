@@ -229,7 +229,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	ToDo^ form = gcnew ToDo(); // will open new form when hit of the button 
 	form->SetAssignment1(textBox1->Text);
-	form->SetAssignment2(textBox1->Text);
+	form->SetDate1(textBox2->Text);
+	form->SetTime1(textBox3->Text);
+	form->SetDescription1(textBox4->Text);
 	form->Show();
 
 	// adds the ToDo form to the list

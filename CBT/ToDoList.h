@@ -25,6 +25,16 @@ namespace CBT {
 		void SetAssignment1(String^ value) { // method for adding stuff to Assigment1
 			Assignment1->Text = value;
 		}
+		void SetDate1(String^ value) {
+			Date1->Text = value;
+		}
+		void SetTime1(String^ value) {
+			time1->Text = value;
+		}
+		void SetDescription1(String^ value) {
+			Description1->Text = value;
+		}
+
 		void SetAssignment2(String^ value) { // method for adding stuff to Assigment1
 			Assignment2->Text = value;
 		}
@@ -55,6 +65,10 @@ namespace CBT {
 
 
 	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ Date1;
+	private: System::Windows::Forms::Label^ time1;
+	private: System::Windows::Forms::Label^ Description1;
+
 
 
 
@@ -85,6 +99,9 @@ namespace CBT {
 			this->Assignment3 = (gcnew System::Windows::Forms::Label());
 			this->Assignment4 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->Date1 = (gcnew System::Windows::Forms::Label());
+			this->time1 = (gcnew System::Windows::Forms::Label());
+			this->Description1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// Today1
@@ -179,12 +196,43 @@ namespace CBT {
 			this->label1->Size = System::Drawing::Size(0, 16);
 			this->label1->TabIndex = 9;
 			// 
+			// Date1
+			// 
+			this->Date1->AutoSize = true;
+			this->Date1->Location = System::Drawing::Point(133, 135);
+			this->Date1->Name = L"Date1";
+			this->Date1->Size = System::Drawing::Size(43, 16);
+			this->Date1->TabIndex = 10;
+			this->Date1->Text = L"Date1";
+			this->Date1->Click += gcnew System::EventHandler(this, &ToDo::label2_Click);
+			// 
+			// time1
+			// 
+			this->time1->AutoSize = true;
+			this->time1->Location = System::Drawing::Point(210, 135);
+			this->time1->Name = L"time1";
+			this->time1->Size = System::Drawing::Size(39, 16);
+			this->time1->TabIndex = 11;
+			this->time1->Text = L"time1";
+			// 
+			// Description1
+			// 
+			this->Description1->AutoSize = true;
+			this->Description1->Location = System::Drawing::Point(274, 135);
+			this->Description1->Name = L"Description1";
+			this->Description1->Size = System::Drawing::Size(82, 16);
+			this->Description1->TabIndex = 12;
+			this->Description1->Text = L"Description1";
+			// 
 			// ToDo
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::LemonChiffon;
 			this->ClientSize = System::Drawing::Size(384, 413);
+			this->Controls->Add(this->Description1);
+			this->Controls->Add(this->time1);
+			this->Controls->Add(this->Date1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->Assignment4);
 			this->Controls->Add(this->Assignment3);
@@ -207,6 +255,8 @@ namespace CBT {
 	private: System::Void ToDo_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
