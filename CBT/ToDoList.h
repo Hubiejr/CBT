@@ -35,7 +35,7 @@ namespace CBT {
 			Description1->Text = value;
 		}
 
-		void SetAssignment2(String^ value) { // method for adding stuff to Assigment1
+		void SetAssignment2(String^ value) { // method for adding stuff to Assigment2
 			Assignment2->Text = value;
 		}
 
@@ -68,6 +68,7 @@ namespace CBT {
 	private: System::Windows::Forms::Label^ Date1;
 	private: System::Windows::Forms::Label^ time1;
 	private: System::Windows::Forms::Label^ Description1;
+
 
 
 
