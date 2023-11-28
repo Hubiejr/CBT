@@ -1,9 +1,10 @@
 #pragma once
 #include "TodoList.h"
 #include <list> // Add to include a list it will be easy they say
-#include todoitem.cpp
-
-vector<ToDoItem> inventory; // my fuckass global vector
+//#include todoitem.cpp
+// #include <vector>
+//
+//vector<ToDoItem> inventory; // my fuckass global vector
 
 namespace CBT {
 
@@ -495,6 +496,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ dueDate = textBox2->Text;
 	String^ time = textBox3->Text;
 	String^ description = textBox4->Text;
+
+	/*vec.push_back(ToDoItem(name, dueDate, time, description, "N/A", 0));*/
 
 
 	// Creates individual cells for each column in the DataGridView 
