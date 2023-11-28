@@ -77,6 +77,15 @@ namespace CBT {
 	private: System::Windows::Forms::Label^ Assignment3;
 	private: System::Windows::Forms::Label^ Assignment2;
 	private: System::Windows::Forms::Panel^ panelToDoList;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Assignment;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ DueDate;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Time;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Description;
+
+
+
+
 
 	protected:
 
@@ -117,6 +126,12 @@ namespace CBT {
 			this->Assignment3 = (gcnew System::Windows::Forms::Label());
 			this->Assignment2 = (gcnew System::Windows::Forms::Label());
 			this->panelToDoList = (gcnew System::Windows::Forms::Panel());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Assignment = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->DueDate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Time = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Description = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -358,12 +373,56 @@ namespace CBT {
 			this->panelToDoList->Size = System::Drawing::Size(10, 422);
 			this->panelToDoList->TabIndex = 0;
 			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->BackgroundColor = System::Drawing::Color::LemonChiffon;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->Assignment,
+					this->DueDate, this->Time, this->Description
+			});
+			this->dataGridView1->Location = System::Drawing::Point(333, 91);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(579, 334);
+			this->dataGridView1->TabIndex = 23;
+			// 
+			// Assignment
+			// 
+			this->Assignment->HeaderText = L"Assignment";
+			this->Assignment->MinimumWidth = 6;
+			this->Assignment->Name = L"Assignment";
+			this->Assignment->Width = 110;
+			// 
+			// DueDate
+			// 
+			this->DueDate->HeaderText = L"DueDate";
+			this->DueDate->MinimumWidth = 6;
+			this->DueDate->Name = L"DueDate";
+			this->DueDate->Width = 90;
+			// 
+			// Time
+			// 
+			this->Time->HeaderText = L"Time";
+			this->Time->MinimumWidth = 6;
+			this->Time->Name = L"Time";
+			this->Time->Width = 90;
+			// 
+			// Description
+			// 
+			this->Description->HeaderText = L"Description";
+			this->Description->MinimumWidth = 6;
+			this->Description->Name = L"Description";
+			this->Description->Width = 110;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::LemonChiffon;
 			this->ClientSize = System::Drawing::Size(790, 425);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->panelToDoList);
 			this->Controls->Add(this->Assignment4);
 			this->Controls->Add(this->Assignment3);
@@ -392,6 +451,7 @@ namespace CBT {
 			this->Name = L"MyForm";
 			this->Text = L"EditSchedule";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -432,11 +492,34 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ time = textBox3->Text;
 	String^ description = textBox4->Text;
 
+
+	// Creates individual cells for each column in the DataGridView 
+	DataGridViewRow^ row = gcnew DataGridViewRow();
+	DataGridViewCell^ cellAssignment = gcnew DataGridViewTextBoxCell();
+	DataGridViewCell^ cellDueDate = gcnew DataGridViewTextBoxCell();
+	DataGridViewCell^ cellTime = gcnew DataGridViewTextBoxCell();
+	DataGridViewCell^ cellDescription = gcnew DataGridViewTextBoxCell();
+
+	// sets the value of each cell from the data to the textboxs
+	cellAssignment->Value = name;
+	cellDueDate->Value = dueDate;
+	cellTime->Value = time;
+	cellDescription->Value = description;
+
+	// adds the cells to the row
+	row->Cells->Add(cellAssignment);
+	row->Cells->Add(cellDueDate);
+	row->Cells->Add(cellTime);
+	row->Cells->Add(cellDescription);
+
+	// adds the row to the DataGridView
+	dataGridView1->Rows->Add(row);
+
 	// display all the data in the labels of main window (MyForm)
-	Assignment1->Text = name;
+	/*Assignment1->Text = name;
 	Date1->Text =  dueDate;
 	time1->Text =  time;
-	Description1->Text = description;
+	Description1->Text = description;*/
 
 	// You can now save this data to a file or a database, or perform any other desired action.
 	// For this example, we'll just display the data in a message box.
