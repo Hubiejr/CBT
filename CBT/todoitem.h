@@ -11,7 +11,7 @@ class ToDoItem {
 private:
 string name;
 string dueDate;
-double dueTime;
+string dueTime;
 string description;
 string status;
 int timeEstimate; // we can have the user input the amount of time in by minutes, then convert to hours
@@ -24,12 +24,12 @@ public:
 
     // Constructors
     ToDoItem();
-    ToDoItem(string, string, double, string, string, int);
+    ToDoItem(string, string, string, string, string, int);
 
     // Getters
     string getName() const { return name; }
     string getDueDate() const { return dueDate; }
-    double getDueTime() const { return dueTime; }
+    string getDueTime() const { return dueTime; }
     string getDescription() const { return description; }
     string getStatus() const { return status; }
     int getTimeEstimate() const { return timeEstimate; }
