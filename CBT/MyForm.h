@@ -2,6 +2,9 @@
 #include "TodoList.h"
 #include <list> // Add to include a list it will be easy they say
 #include todoitem.cpp
+
+vector<ToDoItem> inventory; // my fuckass global vector
+
 namespace CBT {
 
 	using namespace System;
