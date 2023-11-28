@@ -1,6 +1,7 @@
 #pragma once
 #include "TodoList.h"
 #include <list> // Add to include a list it will be easy they say
+#include todoitem.cpp
 namespace CBT {
 
 	using namespace System;
@@ -431,6 +432,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ dueDate = textBox2->Text;
 	String^ time = textBox3->Text;
 	String^ description = textBox4->Text;
+
+	vec.push_back(ToDoItem(name,dueDate,time,description,"N/A",0));
 
 	// display all the data in the labels of main window (MyForm)
 	Assignment1->Text = name;
