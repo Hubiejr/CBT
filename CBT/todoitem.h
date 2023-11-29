@@ -13,8 +13,6 @@ string name;
 string dueDate;
 string dueTime;
 string description;
-string status;
-int timeEstimate; // we can have the user input the amount of time in by minutes, then convert to hours
 
 
 public:
@@ -31,16 +29,12 @@ public:
     string getDueDate() const { return dueDate; }
     string getDueTime() const { return dueTime; }
     string getDescription() const { return description; }
-    string getStatus() const { return status; }
-    int getTimeEstimate() const { return timeEstimate; }
 
     // Setters
     void setName(const string& newName) { name = newName; }
     void setDueDate(const string& newDueDate) { dueDate = newDueDate; }
     void setDueTime(const double& newDueTime) { dueTime = newDueTime; }
     void setDescription(const string& newDescription) { description = newDescription; }
-    void setStatus(const string& newStatus) { status = newStatus; }
-    void setTimeEstimate(const int& newTimeEstimate) { timeEstimate = newTimeEstimate; }
 
     // Other
     void print();
