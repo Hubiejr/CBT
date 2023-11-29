@@ -513,6 +513,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	cellTime->Value = time;
 	cellDescription->Value = description;
 
+	// write values to out file
+	
+
 	// adds the cells to the row
 	row->Cells->Add(cellAssignment);
 	row->Cells->Add(cellDueDate);
@@ -559,6 +562,7 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	cout << "HEY LOOK AT ME!!!" << endl;
 }
 };
 }
