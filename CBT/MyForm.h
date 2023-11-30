@@ -460,7 +460,58 @@ namespace CBT {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-		}
+			// write results from txt file to grid
+			std::string line;
+    			int lineCount = 0;
+			// open file
+			std::ifstream inFile("database.txt");
+
+			// this is a loop that reads in a text file that stores To Do List items
+			// it creates a row in the DataGrid, then fills a variable in the row for each line in the file
+			// after it's gone through 4 lines, it resets the counter so a new row can be made and new variables can be inserted
+			while (std::getline(inFile, line)) {
+				// start new row
+				if (lineCount == 0) {
+					// initialize the row stuff
+					DataGridViewRow^ row = gcnew DataGridViewRow();
+					DataGridViewCell^ cellAssignment = gcnew DataGridViewTextBoxCell();
+					DataGridViewCell^ cellDueDate = gcnew DataGridViewTextBoxCell();
+					DataGridViewCell^ cellTime = gcnew DataGridViewTextBoxCell();
+					DataGridViewCell^ cellDescription = gcnew DataGridViewTextBoxCell();
+				}
+
+				// row stuff is set, start the counter to add things by line
+			        lineCount++;
+
+			        if (lineCount == 1) {
+					cellAssignment->Value = line;
+					row->Cells->Add(cellAssignment);
+					continue;
+				}
+				elif (lineCount == 2){
+					cellDueDate->Value = line;
+					row->Cells->Add(cellDueDate);
+					continue;
+				}
+				elif (lineCount == 3){
+					cellTime->Value = line;
+					row->Cells->Add(cellTime);
+					continue;
+				}
+				elif(lineCount == 4){
+					cellDescription->Value = line;
+					row->Cells->Add(cellDescription);
+					continue;
+				}
+				// lineCount should be more than four, so we can push the Row to the Grid, and restart the loop
+			        else {
+					dataGridView1->Rows->Add(row);
+					lineCount == 0;
+					continue;
+				}
+        		}
+			inFile.close()
+    }
 		// makes Pannel a argument so ToDo can merge at line 77
 
 #pragma endregion
@@ -497,8 +548,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ time = textBox3->Text;
 	String^ description = textBox4->Text;
 
-	/*vec.push_back(ToDoItem(name, dueDate, time, description, "N/A", 0));*/
-
 
 	// Creates individual cells for each column in the DataGridView 
 	DataGridViewRow^ row = gcnew DataGridViewRow();
@@ -512,9 +561,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	cellDueDate->Value = dueDate;
 	cellTime->Value = time;
 	cellDescription->Value = description;
-
-	// write values to out file
-	
 
 	// adds the cells to the row
 	row->Cells->Add(cellAssignment);
@@ -535,6 +581,14 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	// For this example, we'll just display the data in a message box.
 	String^ message = "Name: " + name + "\nDue Date: " + dueDate + "\nTime: " + time + "\nDescription: " + description;
 	MessageBox::Show(message, "Data Saved");
+
+	std::ofstream outFile;
+    	outFile.open("database.txt", std::ios::app); // Open file in append mode
+	fout << name << endl;
+	fout << dueDate << endl;
+	fout << time << endl;
+	fout << description << endl;
+	outFile.close();
 
 	//// Create a new instance of ToDo for each assignment  DOESNT WORK PROPERLY
 	//ToDo^ form1 = gcnew ToDo();
