@@ -2,9 +2,18 @@
 #include "TodoList.h"
 #include <list> // Add to include a list it will be easy they say
 //#include todoitem.cpp
-// #include <vector>
-//
-//vector<ToDoItem> inventory; // my fuckass global vector
+#include <vector>
+#include <iomanip>
+#include <string>
+#include <Windows.h>
+#include <vcclr.h>
+#include <msclr\marshal_cppstd.h>
+#include <msclr\marshal.h>
+#include <vcclr.h>
+#include <vcclr.h>
+#include <fstream>
+#include <iostream>
+/*vector<ToDoItem> inventory;*/ // my fuckass global vector
 
 namespace CBT {
 
@@ -464,53 +473,57 @@ namespace CBT {
 			std::string line;
     			int lineCount = 0;
 			// open file
-			std::ifstream inFile("database.txt");
+				std::ifstream inFile("database.txt");
 
-			// this is a loop that reads in a text file that stores To Do List items
+
+
+			// t
+			// his is a loop that reads in a text file that stores To Do List items
 			// it creates a row in the DataGrid, then fills a variable in the row for each line in the file
 			// after it's gone through 4 lines, it resets the counter so a new row can be made and new variables can be inserted
+			
 			while (std::getline(inFile, line)) {
 				// start new row
-				if (lineCount == 0) {
+				
 					// initialize the row stuff
 					DataGridViewRow^ row = gcnew DataGridViewRow();
 					DataGridViewCell^ cellAssignment = gcnew DataGridViewTextBoxCell();
 					DataGridViewCell^ cellDueDate = gcnew DataGridViewTextBoxCell();
 					DataGridViewCell^ cellTime = gcnew DataGridViewTextBoxCell();
 					DataGridViewCell^ cellDescription = gcnew DataGridViewTextBoxCell();
-				}
+		
 
 				// row stuff is set, start the counter to add things by line
-			        lineCount++;
+					if (lineCount == 0) {
+						cellAssignment->Value = gcnew System::String(line.c_str());  // Convert std::string to System::String
+						row->Cells->Add(cellAssignment);
+					}
+					else if (lineCount == 1) {
+						cellDueDate->Value = gcnew System::String(line.c_str());  // Convert std::string to System::String
+						row->Cells->Add(cellDueDate);
+					}
+					else if (lineCount == 2) {
+						cellTime->Value = gcnew System::String(line.c_str());  // Convert std::string to System::String
+						row->Cells->Add(cellTime);
+					}
+					else if (lineCount == 3) {
+						cellDescription->Value = gcnew System::String(line.c_str());  // Convert std::string to System::String
+						row->Cells->Add(cellDescription);
+					}
 
-			        if (lineCount == 1) {
-					cellAssignment->Value = line;
-					row->Cells->Add(cellAssignment);
-					continue;
-				}
-				elif (lineCount == 2){
-					cellDueDate->Value = line;
-					row->Cells->Add(cellDueDate);
-					continue;
-				}
-				elif (lineCount == 3){
-					cellTime->Value = line;
-					row->Cells->Add(cellTime);
-					continue;
-				}
-				elif(lineCount == 4){
-					cellDescription->Value = line;
-					row->Cells->Add(cellDescription);
-					continue;
-				}
-				// lineCount should be more than four, so we can push the Row to the Grid, and restart the loop
-			        else {
-					dataGridView1->Rows->Add(row);
-					lineCount == 0;
-					continue;
-				}
-        		}
-			inFile.close()
+					// Increment line count
+					lineCount++;
+
+
+					// If line count reaches 4, add the row to the DataGridView and reset line count
+					if (lineCount == 4) {
+						dataGridView1->Rows->Add(row);
+						lineCount = 0;
+					}
+			}
+
+			// Close the file
+			inFile.close();
     }
 		// makes Pannel a argument so ToDo can merge at line 77
 
@@ -582,13 +595,18 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ message = "Name: " + name + "\nDue Date: " + dueDate + "\nTime: " + time + "\nDescription: " + description;
 	MessageBox::Show(message, "Data Saved");
 
-	std::ofstream outFile;
-    	outFile.open("database.txt", std::ios::app); // Open file in append mode
-	fout << name << endl;
-	fout << dueDate << endl;
-	fout << time << endl;
-	fout << description << endl;
-	outFile.close();
+	std::ofstream outFile("database.txt", std::ios::app); // Open file in append mode
+	if (outFile.is_open()) {
+		outFile << msclr::interop::marshal_as<std::string>(name) << '\n';
+		outFile << msclr::interop::marshal_as<std::string>(dueDate) << '\n';
+		outFile << msclr::interop::marshal_as<std::string>(time) << '\n';
+		outFile << msclr::interop::marshal_as<std::string>(description) << '\n';
+		outFile.close();
+		MessageBox::Show("Data Saved", "Success");
+	}
+	else {
+		MessageBox::Show("Error opening file", "Error");
+	}
 
 	//// Create a new instance of ToDo for each assignment  DOESNT WORK PROPERLY
 	//ToDo^ form1 = gcnew ToDo();
@@ -606,6 +624,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	textBox2->Clear();
 	textBox3->Clear();
 	textBox4->Clear();
+
+	dataGridView1->Refresh();
 }
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
