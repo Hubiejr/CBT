@@ -32,7 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="database.txt">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </Text>
   </ItemGroup>
 </Project>

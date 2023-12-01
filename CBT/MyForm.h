@@ -469,13 +469,17 @@ namespace CBT {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			// write results from txt file to grid
-			std::string line;
-    			int lineCount = 0;
+			
 			// open file
 				std::ifstream inFile("database.txt");
+				if (!inFile.is_open()) {
+					MessageBox::Show("ERROR OPENING FILE");
+					return;
+				}
 
-
+				// write results from txt file to grid
+				std::string line;
+				int lineCount = 0;
 
 			// t
 			// his is a loop that reads in a text file that stores To Do List items
@@ -483,6 +487,7 @@ namespace CBT {
 			// after it's gone through 4 lines, it resets the counter so a new row can be made and new variables can be inserted
 			
 			while (std::getline(inFile, line)) {
+				Console::WriteLine(line.c_str());
 				// start new row
 				
 					// initialize the row stuff
@@ -529,103 +534,67 @@ namespace CBT {
 
 #pragma endregion
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+    // Gets data entered by User
+    String^ name = textBox1->Text;
+    String^ dueDate = textBox2->Text;
+    String^ time = textBox3->Text;
+    String^ description = textBox4->Text;
 
-	// THIS MAKES A NEW WINDOW WE CAN MESS WITH IT OR KILL IT
-	// 
-	//// Create a new instance of ToDo and set the data
-	//MyForm^ form = gcnew MyForm();
-	//form->SetAssignment1(textBox1->Text);
-	//form->SetDate1(textBox2->Text);
-	//form->SetTime1(textBox3->Text);
-	//form->SetDescription1(textBox4->Text);
+    // Check if any of the fields is empty before saving
+    if (name == "" || dueDate == "" || time == "" || description == "") {
+        MessageBox::Show("Please fill in all fields.", "Error");
+        return;
+    }
 
-	//// Show the ToDo form
-	//form->Show();
+    // Creates individual cells for each column in the DataGridView 
+    DataGridViewRow^ row = gcnew DataGridViewRow();
+    DataGridViewCell^ cellAssignment = gcnew DataGridViewTextBoxCell();
+    DataGridViewCell^ cellDueDate = gcnew DataGridViewTextBoxCell();
+    DataGridViewCell^ cellTime = gcnew DataGridViewTextBoxCell();
+    DataGridViewCell^ cellDescription = gcnew DataGridViewTextBoxCell();
 
-	//// Add the ToDo form to the list
-	//assignmentsList->Add(form);
+    // sets the value of each cell from the data to the textboxs
+    cellAssignment->Value = name;
+    cellDueDate->Value = dueDate;
+    cellTime->Value = time;
+    cellDescription->Value = description;
 
-	//// Clear text boxes after hitting the button
-	//textBox1->Clear();
-	//textBox2->Clear();
-	//textBox3->Clear();
-	//textBox4->Clear();
+    // adds the cells to the row
+    row->Cells->Add(cellAssignment);
+    row->Cells->Add(cellDueDate);
+    row->Cells->Add(cellTime);
+    row->Cells->Add(cellDescription);
 
+    // adds the row to the DataGridView
+    dataGridView1->Rows->Add(row);
 
+    // You can now save this data to a file or a database, or perform any other desired action.
+    // For this example, we'll just display the data in a message box.
+    String^ message = "Name: " + name + "\nDue Date: " + dueDate + "\nTime: " + time + "\nDescription: " + description;
+    MessageBox::Show(message, "Data Saved");
 
-	// THIS IS WHERE THE HARDCODED DATA IS 
-	
-	// Gets data entered by User
-	String^ name = textBox1->Text;
-	String^ dueDate = textBox2->Text;
-	String^ time = textBox3->Text;
-	String^ description = textBox4->Text;
+    // Save data to file
+    std::ofstream outFile("database.txt", std::ios::app); // Open file in append mode
+    if (outFile.is_open()) {
+        outFile << msclr::interop::marshal_as<std::string>(name) << '\n';
+        outFile << msclr::interop::marshal_as<std::string>(dueDate) << '\n';
+        outFile << msclr::interop::marshal_as<std::string>(time) << '\n';
+        outFile << msclr::interop::marshal_as<std::string>(description) << '\n';
+        outFile.close();
 
+        // Display success message
+        MessageBox::Show("Data Saved", "Success");
+    }
+    else {
+        // Display error message
+        MessageBox::Show("Error opening file", "Error");
+    }
 
-	// Creates individual cells for each column in the DataGridView 
-	DataGridViewRow^ row = gcnew DataGridViewRow();
-	DataGridViewCell^ cellAssignment = gcnew DataGridViewTextBoxCell();
-	DataGridViewCell^ cellDueDate = gcnew DataGridViewTextBoxCell();
-	DataGridViewCell^ cellTime = gcnew DataGridViewTextBoxCell();
-	DataGridViewCell^ cellDescription = gcnew DataGridViewTextBoxCell();
-
-	// sets the value of each cell from the data to the textboxs
-	cellAssignment->Value = name;
-	cellDueDate->Value = dueDate;
-	cellTime->Value = time;
-	cellDescription->Value = description;
-
-	// adds the cells to the row
-	row->Cells->Add(cellAssignment);
-	row->Cells->Add(cellDueDate);
-	row->Cells->Add(cellTime);
-	row->Cells->Add(cellDescription);
-
-	// adds the row to the DataGridView
-	dataGridView1->Rows->Add(row);
-
-	// display all the data in the labels of main window (MyForm)
-	/*Assignment1->Text = name;
-	Date1->Text =  dueDate;
-	time1->Text =  time;
-	Description1->Text = description;*/
-
-	// You can now save this data to a file or a database, or perform any other desired action.
-	// For this example, we'll just display the data in a message box.
-	String^ message = "Name: " + name + "\nDue Date: " + dueDate + "\nTime: " + time + "\nDescription: " + description;
-	MessageBox::Show(message, "Data Saved");
-
-	std::ofstream outFile("database.txt", std::ios::app); // Open file in append mode
-	if (outFile.is_open()) {
-		outFile << msclr::interop::marshal_as<std::string>(name) << '\n';
-		outFile << msclr::interop::marshal_as<std::string>(dueDate) << '\n';
-		outFile << msclr::interop::marshal_as<std::string>(time) << '\n';
-		outFile << msclr::interop::marshal_as<std::string>(description) << '\n';
-		outFile.close();
-		MessageBox::Show("Data Saved", "Success");
-	}
-	else {
-		MessageBox::Show("Error opening file", "Error");
-	}
-
-	//// Create a new instance of ToDo for each assignment  DOESNT WORK PROPERLY
-	//ToDo^ form1 = gcnew ToDo();
-	//form1->SetAssignment1(name);
-	//form1->Show();
-	//assignmentsList->Add(form1);
-
-	//ToDo^ form2 = gcnew ToDo();
-	//form2->SetAssignment2(name);
-	//form2->Show();
-	//assignmentsList->Add(form2);
-
-	// clear text boxes after you hit the button
-	textBox1->Clear();
-	textBox2->Clear();
-	textBox3->Clear();
-	textBox4->Clear();
-
-	dataGridView1->Refresh();
+    // clear text boxes after you hit the button
+    textBox1->Clear();
+    textBox2->Clear();
+    textBox3->Clear();
+    textBox4->Clear();
 }
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
