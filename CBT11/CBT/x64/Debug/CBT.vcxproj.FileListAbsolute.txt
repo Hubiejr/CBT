@@ -1,0 +1,4 @@
+C:\Users\Alex\source\repos\CBT11\CBT\x64\Debug\CBT.vcxproj.AssemblyReference.cache
+C:\Users\Alex\source\repos\CBT11\CBT\x64\Debug\CBT.MyForm.resources
+C:\Users\Alex\source\repos\CBT11\CBT\x64\Debug\CBT.ToDoList.resources
+C:\Users\Alex\source\repos\CBT11\CBT\x64\Debug\CBT.vcxproj.GenerateResource.cache
