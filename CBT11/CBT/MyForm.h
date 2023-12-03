@@ -646,6 +646,8 @@ private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
 	// close the file
 	//infile.close();
 
+	//updated ops here
+
 	String^ fileName = "database.txt";
 	StreamReader^ reader = gcnew StreamReader(fileName);
 
