@@ -1,7 +1,7 @@
 #pragma once
 #include "TodoList.h"
 #include <list> // Add to include a list it will be easy they say
-//#include todoitem.cpp
+
 #include <vector>
 #include <iomanip>
 #include <string>
@@ -13,7 +13,7 @@
 #include <vcclr.h>
 #include <fstream>
 #include <iostream>
-/*vector<ToDoItem> inventory;*/ // my fuckass global vector
+
 
 namespace CBT {
 
@@ -23,6 +23,7 @@ namespace CBT {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Summary for MyForm
@@ -471,61 +472,7 @@ namespace CBT {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			// write results from txt file to grid
-			std::string line;
-    			int lineCount = 0;
-			// open file
-				std::ifstream inFile("database.txt");
-
-
-
-			// t
-			// his is a loop that reads in a text file that stores To Do List items
-			// it creates a row in the DataGrid, then fills a variable in the row for each line in the file
-			// after it's gone through 4 lines, it resets the counter so a new row can be made and new variables can be inserted
 			
-			while (std::getline(inFile, line)) {
-				// start new row
-				
-					// initialize the row stuff
-					DataGridViewRow^ row = gcnew DataGridViewRow();
-					DataGridViewCell^ cellAssignment = gcnew DataGridViewTextBoxCell();
-					DataGridViewCell^ cellDueDate = gcnew DataGridViewTextBoxCell();
-					DataGridViewCell^ cellTime = gcnew DataGridViewTextBoxCell();
-					DataGridViewCell^ cellDescription = gcnew DataGridViewTextBoxCell();
-		
-
-				// row stuff is set, start the counter to add things by line
-					if (lineCount == 0) {
-						cellAssignment->Value = gcnew System::String(line.c_str());  // Convert std::string to System::String
-						row->Cells->Add(cellAssignment);
-					}
-					else if (lineCount == 1) {
-						cellDueDate->Value = gcnew System::String(line.c_str());  // Convert std::string to System::String
-						row->Cells->Add(cellDueDate);
-					}
-					else if (lineCount == 2) {
-						cellTime->Value = gcnew System::String(line.c_str());  // Convert std::string to System::String
-						row->Cells->Add(cellTime);
-					}
-					else if (lineCount == 3) {
-						cellDescription->Value = gcnew System::String(line.c_str());  // Convert std::string to System::String
-						row->Cells->Add(cellDescription);
-					}
-
-					// Increment line count
-					lineCount++;
-
-
-					// If line count reaches 4, add the row to the DataGridView and reset line count
-					if (lineCount == 4) {
-						dataGridView1->Rows->Add(row);
-						lineCount = 0;
-					}
-			}
-
-			// Close the file
-			inFile.close();
 
 			this->dataGridView1->Sort(this->dataGridView1->Columns["DueDate"], System::ComponentModel::ListSortDirection::Ascending);
 
@@ -641,6 +588,82 @@ private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	// write results from txt file to grid
+	//std::string line;
+	//int lineCount = 0;
+	//// open file
+	//std::ifstream inFile("database.txt");
+
+	// this is a loop that reads in a text file that stores to do list items
+	// it creates a row in the datagrid, then fills a variable in the row for each line in the file
+	// after it's gone through 4 lines, it resets the counter so a new row can be made and new variables can be inserted
+
+	//while (std::getline(infile, line)) {
+	//	 start new row
+
+	//	if (linecount == 0) {
+	//		 initialize the row stuff
+	//		datagridviewrow^ row = gcnew datagridviewrow();
+	//		datagridviewcell^ cellassignment = gcnew datagridviewtextboxcell();
+	//		datagridviewcell^ cellduedate = gcnew datagridviewtextboxcell();
+	//		datagridviewcell^ celltime = gcnew datagridviewtextboxcell();
+	//		datagridviewcell^ celldescription = gcnew datagridviewtextboxcell();
+	//	}
+
+	//	linecount++;
+
+	//	 row stuff is set, start the counter to add things by line
+	//	if (linecount == 1) {
+	//		cellassignment->value = gcnew system::string(line.c_str());  // convert std::string to system::string
+	//		row->cells->add(cellassignment);
+	//		continue;
+	//	}
+	//	else if (linecount == 2) {
+	//		cellduedate->value = gcnew system::string(line.c_str());  // convert std::string to system::string
+	//		row->cells->add(cellduedate);
+	//		continue;
+	//	}
+	//	else if (linecount == 3) {
+	//		celltime->value = gcnew system::string(line.c_str());  // convert std::string to system::string
+	//		row->cells->add(celltime);
+	//		continue;
+	//	}
+	//	else if (linecount == 4) {
+	//		celldescription->value = gcnew system::string(line.c_str());  // convert std::string to system::string
+	//		row->cells->add(celldescription);
+	//		continue;
+	//	}
+
+	//	 if line count reaches 4, add the row to the datagridview and reset line count
+	//	else {
+	//		datagridview1->rows->add(row);
+	//		linecount = 0;
+	//		continue;
+	//	}
+	//}
+
+	// close the file
+	//infile.close();
+
+	String^ fileName = "database.txt";
+	StreamReader^ reader = gcnew StreamReader(fileName);
+
+	array<String^>^ rowData = gcnew array<String^>(4); // Array to hold data for each row
+
+	String^ line;
+	int rowIndex = 0;
+
+	while ((line = reader->ReadLine()) != nullptr) {
+		rowData[rowIndex++] = line; // Store each line in the rowData array
+
+		if (rowIndex == 4) {
+			dataGridView1->Rows->Add(rowData); // Add rowData to the DataGridView
+			rowIndex = 0; // Reset rowIndex for the next row
+		}
+	}
+
+	reader->Close();
 }
 };
 }
