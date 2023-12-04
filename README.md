@@ -6,11 +6,14 @@ It is a procrastination software so you can constantly get things done that you 
 
 ## How to Install
 ![image](https://github.com/Hubiejr/CBT/assets/59489351/ccfa8287-bd94-45cb-9f36-6fa7648419e2)
+
+## Steps
 • Install Visual studio 2022
 • When it installs type into your search bar visual studio downloader
 • You will see Visual studio 2022 hit MODIFY
 • go to individual components IN THE PICTURE and find this check mark hit install and you should be set 
 • If this doesnt work download the .NetDesktop Development But you shouldnt have to 
+• clone the repository 
 
   ### How to Create New Tasks:
  •	To add a new assignment, fill in the information boxes labeled “Name”, “Due Date”, “Time”, and “Description”.
