@@ -5,11 +5,11 @@ It is a procrastination software so you can constantly get things done that you 
 # City Boy Planners User Guide
 
 ## How to Install
+![image](https://github.com/Hubiejr/CBT/assets/59489351/ccfa8287-bd94-45cb-9f36-6fa7648419e2)
 • Install Visual studio 2022
 • When it installs type into your search bar visual studio downloader
 • You will see Visual studio 2022 hit MODIFY
 • go to individual components IN THE PICTURE and find this check mark hit install and you should be set 
-![image](https://github.com/Hubiejr/CBT/assets/59489351/ccfa8287-bd94-45cb-9f36-6fa7648419e2)
 • If this doesnt work download the .NetDesktop Development But you shouldnt have to 
 
   ### How to Create New Tasks:
