@@ -4,6 +4,9 @@ It is a procrastination software so you can constantly get things done that you 
 
 # City Boy Planners User Guide
 
+## if you ever get stuck heres a tutorial to help.
+https://www.simplilearn.com/tutorials/cpp-tutorial/cpp-gui
+
 ## How to Install
 ![image](https://github.com/Hubiejr/CBT/assets/59489351/ccfa8287-bd94-45cb-9f36-6fa7648419e2)
 
